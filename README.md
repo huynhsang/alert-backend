@@ -15,7 +15,7 @@ Challenge users a number of open source projects to work properly:
 
 - [Springboot] - Open source Java-based framework
 - [Maven] - A software project management and comprehension tool
-- [MySQL] - Open source relational database management system
+- [PostgreSQL] - Open source relational database management system
 - [Docker] - Open source containerization platform
 - [Docker-compose] - A tool for defining and running multi-container Docker applications
 
@@ -84,57 +84,6 @@ APIs Test by using _curl_:
            "token": "YWRtaW46YWRtaW4=",
            "type": "Basic"
         }
-        ``` 
-2. Import employees with the given hierarchy:
-    - API description: validate the hierarchy then import employees to database
-        ```sh
-        POST /api/employees HTTP/1.1
-        HOST: localhost:8080
-        Security: Basic authentication
-        Content-Type: application/json
-        Body: {
-            "key": "value"
-        }
-        ```
-    - Example:
-        ```sh
-        curl --header "Content-Type: application/json" --header "Authorization: Basic YWRtaW46YWRtaW4="\
-            --request POST\
-            --data '{"Pete": "Nick", "Barbara": "Nick", "Nick": "Sophie", "Sophie": "Jonas"}' \
-            http://localhost:8080/api/employees
-      
-        ## Response 201:
-        {
-            "Jonas": {
-                "Sophie": {
-                    "Nick": {
-                        "Pete": {},
-                        "Barbara": {}
-                    }
-                }
-            }
-        }
-        ```
-    
-3. Get supervisors name by the given employee:
-    - API description: find and get supervisors name by employee
-        ```sh
-        GET /api/supervisors/{employeeName} HTTP/1.1
-        HOST: localhost:8080
-        Security: Basic authentication
-        Accept: application/json
-        Parameters: [employeeName]
-        ```
-    - Example:
-        ```sh
-        curl --header "Content-Type: application/json" --header "Authorization: Basic YWRtaW46YWRtaW4="\
-             --request GET http://localhost:8080/api/supervisors/Nick
-      
-        ## Response 200:
-        {
-            "supervisorName": "Sophie",
-            "higherSupervisorName": "Jonas"
-        }
         ```
 
 ## Deployment
@@ -166,6 +115,6 @@ MIT
 
    [Springboot]: <https://spring.io/projects/spring-boot>
    [Maven]: <https://maven.apache.org/>
-   [Mysql]: <https://www.mysql.com/>
+   [PostgreSQL]: <https://www.postgresql.com/>
    [Docker]: <https://www.docker.com/>
    [Docker-compose]: <https://docs.docker.com/compose/>
