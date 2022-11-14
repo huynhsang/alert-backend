@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+    challenge_postgresdb:
+        image: postgis/postgis:13-3.3
+        container_name: challenge_postgresdb
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_HOST: ${POSTGRES_HOST}
+            POSTGRES_PORT: ${POSTGRES_PORT}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        ports:
+            - ${POSTGRES_PORT}:${POSTGRES_PORT}
+        volumes:
+            - ./db-data/postgresql:/var/lib/postgresql/data
+            - ./db-data/docker-entrypoint:/docker-entrypoint-initdb.d
+
+    challenge_api:
+        container_name: challenge-api
+        image: challenge-api
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+        depends_on:
+            - challenge_postgresdb
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://challenge_postgresdb:5432/challenge
+            SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+            SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
