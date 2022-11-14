@@ -6,5 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface AlertDAO extends JpaRepository<Alert, Integer> {
-    List<Alert> findByMachineOrderByIdAsc(String machine);
+    /**
+     * Find all alerts and order by ID ASC
+     *
+     * @return the list of Alert
+     */
+    List<Alert> findByOrderByIdAsc();
 }

@@ -21,14 +21,13 @@ public class AlertController {
 
 
     /**
-     * GET /api/alerts?machine=:machine : Get alerts by machine
+     * GET /api/alerts : Get all alerts
      *
-     * @param machine  The name of machine
-     * @return the list of found alerts
+     * @return the list of alerts
      */
     @GetMapping(path = "/alerts", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<List<Alert>> getAlertsByMachine(@RequestParam String machine) {
-        List<Alert> alerts = alertService.findByMachine(machine);
+    public ResponseEntity<List<Alert>> getAlertsByMachine() {
+        List<Alert> alerts = alertService.findAll();
 
         return new ResponseEntity<>(alerts, HttpStatus.OK);
     }

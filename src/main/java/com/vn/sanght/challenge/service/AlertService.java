@@ -25,10 +25,9 @@ public interface AlertService {
     Alert getById(Integer id);
 
     /**
-     * Find alerts by the given machine.
+     * Find all alerts.
      *
-     * @param machine The machine name
      * @return the list of entities
      */
-    List<Alert> findByMachine(String machine);
+    List<Alert> findAll();
 }

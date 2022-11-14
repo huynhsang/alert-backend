@@ -26,7 +26,7 @@ public class AlertServiceImpl implements AlertService {
     }
 
     @Override
-    public List<Alert> findByMachine(String machine) {
-        return alertDAO.findByMachineOrderByIdAsc(machine);
+    public List<Alert> findAll() {
+        return alertDAO.findByOrderByIdAsc();
     }
 }
