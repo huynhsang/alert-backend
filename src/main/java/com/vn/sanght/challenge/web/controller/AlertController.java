@@ -32,6 +32,13 @@ public class AlertController {
         return new ResponseEntity<>(alerts, HttpStatus.OK);
     }
 
+    /**
+     * PATCH /api/alert/{id} : Update alert attributes by ID
+     *
+     * @param id The ID of alert
+     * @param payload The data to update
+     * @return updated alert
+     */
     @PatchMapping(path = "/alerts/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Alert> updateById(
             @PathVariable Integer id,
