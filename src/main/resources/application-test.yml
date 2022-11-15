@@ -2,7 +2,7 @@ spring:
     application:
         name: Challenge
     datasource:
-        url: jdbc:postgresql://localhost:5432/challenge_test
+        url: jdbc:postgresql://localhost:5433/challenge_test
         username: postgres
         password: postgres
     jpa:
